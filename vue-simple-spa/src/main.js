@@ -1,36 +1,34 @@
 import Vue from 'vue'
 import App from './App'
+// import router from './router'
+import VueCookie from 'vue-cookie'
 import VueRouter from 'vue-router'
+import Home from './components/Home'
+import Login from './components/Login'
+import Signup from './components/Signup'
 
+Vue.use(VueCookie)
 Vue.use(VueRouter)
 
-import Hello from './components/Hello'
-import About from './components/About'
-
 const routes = [
-  { path: '/',  },
-  { path: '/hello', component: Hello },
-  { path: '/about', component: About }
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    component: Signup
+  }
 ]
 
 const router = new VueRouter({
   routes,
   mode: 'history'
 })
-
-/***
- * ВПИХНУТЬ НОРМАЛЬНЫЙ КОМПОНЕНТ С НАВИГАЦИЕЙ, СМЕНЯЮЩИЙСЯ ПРИ ИЗМЕНЕНИИ РОУТОВ.
- * Ладно, в целом таски такие:
- *  1. Сбацать хедер/футер и основной блок. В хедере сделать навигационную панель, сменающуюся при изменении роута.
- *     Например, если пользователь находится на том адресе, который указан в навпанели, то она пропадает/становится недоступной для клика.
- *  2. Впихнуть анимации смены роутов. Свайп вправо/влево/вверх/вниз (choose one), схлопывание, сворачивание, etc. Короче говоря, анимацию.
- *  3. Сделать функционал. Для начала хотя бы парсинг чего-нибудь и вывод, аля того, что сделано на анг2. Также неплохо бы поработать с модальными окнами.
- *  4. Освоить динамические роуты и именованные роуты + разобраться с гвард хуками и событиями.
- *  5. Хз пока как, но сделать добавление инфы (карточки какие-нибудь) и просмотр её по динамическим роутам.
- *  6. Прикрутить бек.
- *  7. Прикрутить базу с CRUD операциями.
- *  8. Сделать простенькую игру (аля тимберджека) и впилить сюда.
- */
 
 new Vue({
   el: '#app',

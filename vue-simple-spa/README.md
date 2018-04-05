@@ -1,4 +1,4 @@
-# spa
+# vue-simple-spa
 
 > A Vue.js project
 

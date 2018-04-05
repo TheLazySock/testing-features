@@ -1,13 +1,17 @@
 <template>
-  <div id="app">
-  <!-- the router outlet, where all matched components would ber viewed -->
-  <router-view></router-view>
-  </div>
+  <v-app>
+    <v-container>
+      <router-view/>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
   export default {
-    name: 'app'
+    name: 'app',
+    data () {
+      return {}
+    }
   }
 </script>
 
@@ -24,8 +28,8 @@
       height: 100%;
       top: 0;
       left: 0;
-      background-color: #ffffff;
-      opacity: 0.6;
+      background-color: $background-tint;
+      opacity: .3;
       z-index: -1;
     }
 
