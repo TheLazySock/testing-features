@@ -32,12 +32,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #fefefe5b;
+  min-height: 100vh;
   /* margin-top: 60px; */
 }
 
 #app > nav {
   width: 100%;
-  background: #f5f5f5;
+  background: #eeeeee;
   border-bottom: solid 1px #ededed;
   margin-bottom: 25px;
 }
