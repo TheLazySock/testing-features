@@ -4,6 +4,7 @@ import Router from 'vue-router'
 //main pages
 import Home from '@/components/pages/Home'
 import Cart from '@/components/pages/Cart'
+import Details from '@/components/pages/Details'
 
 //adminpage components
 import Index from '@/components/pages/admin/Index'
@@ -47,6 +48,11 @@ export default new Router({
           component: Edit
         }
       ]
+    },
+    {
+      path: '/details/:id',
+      name: 'Details',
+      component: Details
     },
   ]
 })
