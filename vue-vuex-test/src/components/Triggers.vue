@@ -34,38 +34,47 @@
             </nav>
             <router-view></router-view>
         </section>
-        <div>
-            <ul class="logs">
+        <logs v-bind:logs='logs'/>
+        <!-- <div>
+            <ul class="logs" v-bind:logs="logs">
                 <li v-for="log in logs.reverse()" :key="log.id">{{log}}</li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
+import Logs from './Logs.vue';
+
 export default {
     data() {
         return {
             logs: []
         }
     },
+    components: {
+        'logs': Logs
+    },
     methods: {
+        pushLog(logText) {
+            this.logs.push(logText);
+        },
         //COUNTER METHODS
         counterIncAction() {
             this.$store.dispatch('increaseCount');
-            this.logs.push('counterIncAction');
+            this.pushLog('counterIncAction');
         },
         counterDecAction() {
-            this.$store.dispatch('decreaseCount')
-            this.logs.push('counterDecAction');
+            this.$store.dispatch('decreaseCount');
+            this.pushLog('counterDecAction');
         },
         counterIncMutation() {
-            this.$store.commit('INCREASE_COUNT')
-            this.logs.push('counterIncMutation');
+            this.$store.commit('INCREASE_COUNT');
+            this.pushLog('counterIncMutation');
         },
         counterDecMutation() {
-            this.$store.commit('DECREASE_COUNT')
-            this.logs.push('counterDecMutation');
+            this.$store.commit('DECREASE_COUNT');
+            this.pushLog('counterDecMutation');
         },
     }
 };
@@ -83,14 +92,6 @@ export default {
   width: 30%;
   height: 250px;
   border: solid 1px #d1d1d1;
-}
-
-ul.logs {
-    list-style: circle inside;
-}
-
-.logs > li {
-    display: list-item;
 }
 
 ul {
