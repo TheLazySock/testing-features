@@ -22,5 +22,15 @@ export const cartMutations = {
 }
 
 export const userMutations = {
-
+    [GET_USER] (state) {
+        state.isLoading = true;
+    },
+    [GET_USER_SUCCESS] (state, payload) {
+        state.isLoading = false;
+        state.user = payload;
+    },
+    [GET_USER_FAILURE] (state, payload) {
+        state.isLoading = false;
+        alert(payload);
+    }
 }

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>LOGS</h1>
         <ul class="logs">
             <li v-for="log in logs" :key="log.id">{{log}}</li>
         </ul>

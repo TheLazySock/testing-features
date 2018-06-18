@@ -21,7 +21,9 @@
             </div>
             <!-- TRIGGERS FOR USER -->
             <div class="github-user-trigger">
-
+                <h3>GitHub User triggers</h3>
+                <input placeholder="username" v-model="username"/>
+                <button @click="findUser">Find</button>
             </div>
         </div>
         <section>
@@ -35,11 +37,6 @@
             <router-view></router-view>
         </section>
         <logs v-bind:logs='logs'/>
-        <!-- <div>
-            <ul class="logs" v-bind:logs="logs">
-                <li v-for="log in logs.reverse()" :key="log.id">{{log}}</li>
-            </ul>
-        </div> -->
     </div>
 </template>
 
@@ -49,13 +46,15 @@ import Logs from './Logs.vue';
 export default {
     data() {
         return {
-            logs: []
+            logs: [],
+            username: ''
         }
     },
     components: {
         'logs': Logs
     },
     methods: {
+        //LOGS METHOD
         pushLog(logText) {
             this.logs.push(logText);
         },
@@ -75,6 +74,11 @@ export default {
         counterDecMutation() {
             this.$store.commit('DECREASE_COUNT');
             this.pushLog('counterDecMutation');
+        },
+        //GITHUB USER METHODS
+        findUser() {
+            this.$store.dispatch('fetchUser', this.username);
+            this.pushLog('findUser')
         },
     }
 };
@@ -112,8 +116,16 @@ a.router-link-active, li.router-link-active > a {
     color: #ff0000;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 section > *:last-child {
     width: 100%;
-    height: 50vh;
+    height: 100%;
+    min-height: 50vh;
 }
 </style>

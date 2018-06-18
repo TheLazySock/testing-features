@@ -23,5 +23,11 @@ export const cartActions = {
 }
 
 export const userActions = {
-
+    fetchUser ({ commit, }, username) {
+        commit(GET_USER);
+        fetch(`https://api.github.com/users/${username}`)
+            .then(res => res.json())
+            .then(data => commit(GET_USER_SUCCESS, data))
+            .catch(error => commit(GET_USER_FAILURE, error));
+    }
 }

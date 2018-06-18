@@ -15,5 +15,8 @@ export const cartGetters = {
 }
 
 export const userGetters = {
+    getUser: (state) => {
+        return state.user;
+    }
 
 }
