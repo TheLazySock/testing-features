@@ -2,6 +2,8 @@ import {
     INCREASE_COUNT,
     DECREASE_COUNT,
     ADD_TO_CART,
+    INC_ITEM_COUNT,
+    REMOVE_SINGLE_FROM_CART,
     REMOVE_FROM_CART,
     GET_USER,
     GET_USER_SUCCESS,
@@ -18,7 +20,21 @@ export const counterMutations = {
 }
 
 export const cartMutations = {
-
+    [ADD_TO_CART] (state, payload) {
+        state.cart.push({name: payload.name, count: 1});
+    },
+    [INC_ITEM_COUNT] (state, payload) {
+        const cartItem = state.cart.find(item => item.name === payload.name);
+        cartItem.count++
+    },
+    [REMOVE_SINGLE_FROM_CART] (state, payload) {
+        const cartItem = state.cart.find(item => item.name === payload.name);
+        cartItem.count--
+    },
+    [REMOVE_FROM_CART] (state, payload) {
+        const cartItem = state.cart.find(item => item.name === payload.name);
+        state.cart.splice(state.cart.indexOf(cartItem), 1);
+    }
 }
 
 export const userMutations = {

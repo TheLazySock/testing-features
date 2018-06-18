@@ -11,6 +11,9 @@ export const counterGetters = {
 }
 
 export const cartGetters = {
+    getCart: (state) => {
+        return state.cart;
+    }
 
 }
 

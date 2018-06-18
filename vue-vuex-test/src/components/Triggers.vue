@@ -17,6 +17,10 @@
             </div>
             <!-- TRIGGERS FOR CART -->
             <div class="shopping-cart-trigger">
+                <div v-for="item in ['№1', '№2', '№3', '№4', '№5', '№6', '№7', '№8', '№9', '№10', '№11', '№12']" :key="item.id" class="item">
+                    <h6>{{item}}</h6>
+                    <button @click="addToCart({name: item})">add</button>
+                </div>
 
             </div>
             <!-- TRIGGERS FOR USER -->
@@ -75,6 +79,11 @@ export default {
             this.$store.commit('DECREASE_COUNT');
             this.pushLog('counterDecMutation');
         },
+        //SHOP CART METHODS
+        addToCart(item) {
+            this.$store.dispatch('addProductToCart', item);
+            this.pushLog(`addToCart ${item.name}`);
+        },
         //GITHUB USER METHODS
         findUser() {
             this.$store.dispatch('fetchUser', this.username);
@@ -96,6 +105,32 @@ export default {
   width: 30%;
   height: 250px;
   border: solid 1px #d1d1d1;
+}
+
+.shopping-cart-trigger {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 60px));
+    grid-template-rows: repeat(auto-fit, minmax(60px, 60px));
+    grid-gap: 15px 14px;
+}
+
+.item {
+    width: 60px;
+    height: 60px;
+    border: solid 1px #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item h6 {
+    margin: 0;
+}
+
+.item button {
+    width: 55px;
+    height: 20px;
 }
 
 ul {
